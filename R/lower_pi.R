@@ -41,7 +41,7 @@
 #' @importFrom terra app
 #'
 #' @export
-lower_p <- function(tas, H, Hp) {
+lower_pi <- function(tas, H, Hp) {
   dates <- time(tas)
   T_prime <- app(tas, scale)  # Standardize T
   H_prime <- app(H, scale)  # Standardize H

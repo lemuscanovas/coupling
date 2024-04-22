@@ -39,7 +39,7 @@
 #' @importFrom terra sds lapp rast
 #'
 #' @export
-calculate_P <- function(H, Hp, tas) {
+upper_pi <- function(H, Hp, tas) {
   Htas <- sds(H,tas)
   Hptas <- sds(Hp,tas)
 
