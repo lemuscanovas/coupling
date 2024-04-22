@@ -82,4 +82,4 @@ ggplot() +
         legend.text = element_text(size = 11),
         legend.title = element_text(size = 11))
 ```
-
+![alt text here](img/example_event_coupling_lower_pi.png)
