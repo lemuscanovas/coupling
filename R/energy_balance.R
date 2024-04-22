@@ -25,7 +25,7 @@
 #'   for representing the energy balance in terms of power (W/m^2).
 #'
 #' @examples
-#' calculate_H(1000000, 2.45, 5) # Calculates H given Rn, l, and E values
+#' energy_balance(1000000, 2.45, 5) # Calculates H given Rn, l, and E values
 #'
 #' @note Caution: The ECMWF convention for vertical fluxes is positive downwards.
 #'   This function conforms to this convention by adjusting the calculation of
