@@ -70,6 +70,7 @@ ggplot() +
                        na.value = "white")+
   scale_x_continuous(expand = c(0,0),limits = c(-20,15))+
   scale_y_continuous(expand = c(0,0), limits = c(30,50))+
+  labs(subtitle = names(event))+
   theme_bw()+
   theme(axis.title = element_blank(),
         axis.text = element_blank(),
