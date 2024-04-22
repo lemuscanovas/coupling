@@ -47,6 +47,7 @@ Calculating lower pi
 ```r
 pi <- lower_pi(tas = tasmean, H = H, Hp = Hp)
 ```
+Coupling visualization
 
 ```r
 world <- giscoR::gisco_get_countries()
