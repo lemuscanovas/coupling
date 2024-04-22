@@ -7,23 +7,23 @@ Reading all variables needed for computing (lower pi)
 # loading needed variables for computing lower pi
 
 # Actual/total evaporation (cummulated value until 00h)
-e <- rast("data/e_04_00h_2010_2023.nc")
+e <- rast("data/e_04_00h_2021_2023.nc")
 e <- e * 1000 # to mm
 e <- -e # reverting the ECMWF convention for vertical fluxes which is positive downwards 
 
 # Potential evaporation (as above)
-pev <- rast("data/pev_04_00h_2010_2023.nc")
+pev <- rast("data/pev_04_00h_2021_2023.nc")
 pev <- pev * 1000
 pev <- -pev
 
 
 # Surface Solar net radiation and surface thermal radiation
-ssr <- rast("data/ssr_04_00h_2010_2023.nc")
+ssr <- rast("data/ssr_04_00h_2021_2023.nc")
 ssr <- -ssr
-str <- rast("data/str_04_00h_2010_2023.nc")
+str <- rast("data/str_04_00h_2021_2023.nc")
 str <- -str
 # daily mean temperature at 2m
-tasmean <- rast("data/tasmean_04_2010_2023.nc") -273.15
+tasmean <- rast("data/tasmean_04_2021_2023.nc") -273.15
 ```
 
 Computing the latent heat of vaporisation following Priestley & Taylor (1972)
@@ -55,7 +55,7 @@ world <- giscoR::gisco_get_countries()
 col_temp <- c("white","white","#7DC971","#E1F166","#FDB34E","#FA4B26","#830024","purple")
 
 
-event <- pi[[416:418]] %>% app("mean") %>%
+event <- pi[[86:88]] %>% app("mean") %>%
   setNames(c("2023-04-26/28"))
 
 ggplot() +
@@ -84,3 +84,4 @@ ggplot() +
         legend.title = element_text(size = 11))
 ```
 ![alt text here](img/example_event_coupling_lower_pi.png)
+
