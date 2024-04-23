@@ -110,11 +110,16 @@ ggplot() +
 
 ## Long-term coupling example (**Π**) - to-do
 
-## References
+## Package Citation
+Marc Lemus-Canovas. (2024). coupling (0.1.0). Zenodo. https://doi.org/10.5281/zenodo.11047472
+
+## Contact
+Marc Lemus-Canovas (marc.lemusicanovas@eurac.edu)
+
+## Additional references
 
 - Miralles, D. G., M. J. vanden Berg, A. J. Teuling, and R. A. M. deJeu. Soil moisture-temperature coupling: A multiscale observational analysis, Geophys. Res. Lett., 39, L21707,(2012). doi:10.1029/2012GL053703. 
 - Lemus-Canovas, M., Insua-Costa, D., Trigo, R.M. et al. Record-shattering 2023 Spring heatwave in western Mediterranean amplified by long-term drought. npj Clim Atmos Sci 7, 25 (2024). https://doi.org/10.1038/s41612-024-00569-6
 
-## Contact
-Marc Lemus-Canovas (marc.lemusicanovas@eurac.edu)
+
 
