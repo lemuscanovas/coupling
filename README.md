@@ -1,14 +1,27 @@
 # Coupling
 
-Installing and loading the coupling package
+`Coupling` computes daily (π) and long-term (Π) soil moisture-temperature coupling metrics firstly introduced in [*Miralles et al. (2012)*](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2012GL053703)
+
+## Installation
+
+Installing and loading the `coupling` package
 ```r
 # remotes::install_github("lemuscanovas/coupling")
 library(coupling)
 ```
+Other required libraries to run the examples below:
 
-## Simple example
+```r
+library(tidyverse)
+library(terra)
+library(tidyterra)
+```
+    
 
-Reading all variables needed for computing (lower pi)
+## Day-by-day soil moisture-temperature coupling by means of **π** metric
+
+
+Reading all variables needed for computing π
 ```r
 # loading needed variables for computing lower pi
 
@@ -26,11 +39,12 @@ pev <- -pev
 # Surface Solar net radiation and surface thermal radiation
 ssr <- system.file("extdata", "ssr_04_00h_2010_2023.nc", package = "coupling") %>% rast()
 ssr <- -ssr
-str <- system.file("extdata", "ssr_04_00h_2010_2023.nc", package = "coupling") %>% rast()
+str <- system.file("extdata", "str_04_00h_2010_2023.nc", package = "coupling") %>% rast()
 str <- -str
 
 # daily mean temperature at 2m
-tasmean <- rast("data/tasmean_04_2021_2023.nc") -273.15
+tasmean <- system.file("extdata", "tasmean_04_2010_2023.nc", package = "coupling") %>% rast()
+tasmean <- tasmean - 273.15
 ```
 
 Computing the latent heat of vaporisation following Priestley & Taylor (1972)
@@ -50,19 +64,19 @@ H <- energy_balance(Rn = sr,l = l,E = e)
 Hp <- energy_balance(Rn = sr,l = l,E =  pev)
 ```
 
-Calculating lower pi
+Calculating lower pi (π)
 ```r
 pi <- lower_pi(tas = tasmean, H = H, Hp = Hp)
 ```
-Coupling visualization
+π metric visualization for the 26-28 April 2023. More datails about this event can be found in [*Lemus-Canovas et al. (2024)*](https://www.nature.com/articles/s41612-024-00569-6)
 
 ```r
 world <- giscoR::gisco_get_countries()
 
 col_temp <- c("white","white","#7DC971","#E1F166","#FDB34E","#FA4B26","#830024","purple")
 
-
-event <- pi[[86:88]] %>% app("mean") %>%
+# Extracting  π values for 26-28 april 2023 HW.  
+event <- pi[[416:418]] %>% app("mean") %>%
   setNames(c("2023-04-26/28"))
 
 ggplot() +
@@ -91,4 +105,14 @@ ggplot() +
         legend.title = element_text(size = 11))
 ```
 ![](img/example_event_coupling_lower_pi.png)
+
+## Long-term coupling example (**Π**) - to-do
+
+## References
+
+- Miralles, D. G., M. J. vanden Berg, A. J. Teuling, and R. A. M. deJeu. Soil moisture-temperature coupling: A multiscale observational analysis, Geophys. Res. Lett., 39, L21707,(2012). doi:10.1029/2012GL053703. 
+- Lemus-Canovas, M., Insua-Costa, D., Trigo, R.M. et al. Record-shattering 2023 Spring heatwave in western Mediterranean amplified by long-term drought. npj Clim Atmos Sci 7, 25 (2024). https://doi.org/10.1038/s41612-024-00569-6
+
+## Contact
+Marc Lemus-Canovas (marc.lemusicanovas@eurac.edu)
 
