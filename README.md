@@ -1,4 +1,6 @@
-# Coupling
+# Coupling [![DOI](https://zenodo.org/badge/771042330.svg)](https://zenodo.org/doi/10.5281/zenodo.11047471)
+
+
 
 `Coupling` computes daily (π) and long-term (Π) soil moisture-temperature coupling metrics firstly introduced in [*Miralles et al. (2012)*](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2012GL053703)
 
