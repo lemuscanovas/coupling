@@ -26,7 +26,7 @@ Reading all variables needed for computing π
 # loading needed variables for computing lower pi
 
 # Actual/total evaporation (cummulated value until 00h)
-e <-system.file("extdata", "e_04_00h_2010_2023.nc", package = "coupling") %>% rast
+e <-system.file("extdata", "e_04_00h_2010_2023.nc", package = "coupling") %>% rast()
 e <- e * 1000 # to mm
 e <- -e # reverting the ECMWF convention for vertical fluxes which is positive downwards 
 
