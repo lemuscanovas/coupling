@@ -1,5 +1,11 @@
 # Coupling
 
+Installing and loading the coupling package
+```r
+# remotes::install_github("lemuscanovas/coupling")
+library(coupling)
+```
+
 ## Simple example
 
 Reading all variables needed for computing (lower pi)
@@ -7,21 +13,22 @@ Reading all variables needed for computing (lower pi)
 # loading needed variables for computing lower pi
 
 # Actual/total evaporation (cummulated value until 00h)
-e <- rast("data/e_04_00h_2021_2023.nc")
+e <-system.file("extdata", "e_04_00h_2010_2023.nc", package = "coupling") %>% rast
 e <- e * 1000 # to mm
 e <- -e # reverting the ECMWF convention for vertical fluxes which is positive downwards 
 
 # Potential evaporation (as above)
-pev <- rast("data/pev_04_00h_2021_2023.nc")
+pev <- system.file("extdata", "pev_04_00h_2010_2023.nc", package = "coupling") %>% rast()
 pev <- pev * 1000
 pev <- -pev
 
 
 # Surface Solar net radiation and surface thermal radiation
-ssr <- rast("data/ssr_04_00h_2021_2023.nc")
+ssr <- system.file("extdata", "ssr_04_00h_2010_2023.nc", package = "coupling") %>% rast()
 ssr <- -ssr
-str <- rast("data/str_04_00h_2021_2023.nc")
+str <- system.file("extdata", "ssr_04_00h_2010_2023.nc", package = "coupling") %>% rast()
 str <- -str
+
 # daily mean temperature at 2m
 tasmean <- rast("data/tasmean_04_2021_2023.nc") -273.15
 ```
@@ -83,5 +90,5 @@ ggplot() +
         legend.text = element_text(size = 11),
         legend.title = element_text(size = 11))
 ```
-![alt text here](img/example_event_coupling_lower_pi.png)
+![](img/example_event_coupling_lower_pi.png)
 
